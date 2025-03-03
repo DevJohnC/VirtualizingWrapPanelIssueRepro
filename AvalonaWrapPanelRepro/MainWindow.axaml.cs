@@ -16,7 +16,7 @@ public partial class MainWindow : ReactiveWindow<MainWindowViewModel>
     public MainWindow()
     {
         InitializeComponent();
-        this.WhenActivated(ConfigureBindings);
+        //this.WhenActivated(ConfigureBindings);
     }
 
     private void ConfigureBindings(CompositeDisposable d)

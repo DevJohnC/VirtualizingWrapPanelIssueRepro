@@ -3,11 +3,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="clr-namespace:Avalonia.Labs.Controls"
+        xmlns:valueConverters="clr-namespace:AvalonaWrapPanelRepro.ValueConverters"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="AvalonaWrapPanelRepro.MainWindow"
         Width="300"
         Height="300"
         Title="MainWindow">
+    <Window.Resources>
+        <valueConverters:ScaleConverter x:Key="ScaleConverter" />
+    </Window.Resources>
     <DockPanel>
         <Slider x:Name="PreviewTextScaleSlider"
                 TickPlacement="None"
@@ -28,12 +32,20 @@
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
             
-            <Border x:Name="Border1" Background="Red" Width="100" Height="100">
+            <Border x:Name="Border1" Background="Red" 
+                    Width="{Binding #PreviewTextScaleSlider.Value, Converter={StaticResource ScaleConverter}}" 
+                    Height="{Binding #PreviewTextScaleSlider.Value, Converter={StaticResource ScaleConverter}}" >
                 <TextBlock>Hello World</TextBlock>
             </Border>
-            <Border x:Name="Border2" Background="Red" Width="100" Height="100" />
-            <Border x:Name="Border3" Background="Red" Width="100" Height="100" />
-            <Border x:Name="Border4" Background="Red" Width="100" Height="100" />
+            <Border x:Name="Border2" Background="Red"
+                    Width="{Binding #PreviewTextScaleSlider.Value, Converter={StaticResource ScaleConverter}}" 
+                    Height="{Binding #PreviewTextScaleSlider.Value, Converter={StaticResource ScaleConverter}}" />
+            <Border x:Name="Border3" Background="Red" 
+                    Width="{Binding #PreviewTextScaleSlider.Value, Converter={StaticResource ScaleConverter}}" 
+                    Height="{Binding #PreviewTextScaleSlider.Value, Converter={StaticResource ScaleConverter}}" />
+            <Border x:Name="Border4" Background="Red" 
+                    Width="{Binding #PreviewTextScaleSlider.Value, Converter={StaticResource ScaleConverter}}" 
+                    Height="{Binding #PreviewTextScaleSlider.Value, Converter={StaticResource ScaleConverter}}" />
         </ListBox>
     </DockPanel>
 </Window>
